@@ -41,8 +41,10 @@ export default function ProfilePage() {
       }
     };
 
-    fetchProfile();
-  }, [user, updateUser]);
+    if (user?.id) {
+      fetchProfile();
+    }
+  }, [user?.id]); // Only depend on user.id, not the entire user object or updateUser
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
